@@ -1,0 +1,719 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泰国 TikTok Shop 一件代发选品调研报告 | 2026-09</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --ink:#1a1a1a; --ink2:#4a4a4a; --ink3:#8a8a8a;
+    --gold:#C9A227; --gold-dark:#8f6e14; --gold-soft:#F7F0DC;
+    --line:#e8e4d8; --bg:#faf9f6; --card:#ffffff;
+    --ok:#2e7d32; --warn:#b26a00; --bad:#c62828;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px 80px}
+  .hero{background:linear-gradient(135deg,#161616 0%,#241f14 100%);color:#fff;padding:56px 24px 48px;margin-bottom:40px}
+  .hero .wrap{padding-bottom:0}
+  .hero .tag{display:inline-block;border:1px solid var(--gold);color:var(--gold);font-size:12px;padding:3px 12px;border-radius:20px;letter-spacing:2px;margin-bottom:18px}
+  .hero h1{font-size:34px;font-weight:700;line-height:1.35;margin-bottom:14px}
+  .hero p.sub{color:#cfc8b8;font-size:15px;max-width:720px}
+  .hero .meta{margin-top:22px;font-size:12.5px;color:#8d8676}
+  .hero .meta span{margin-right:18px}
+  section{margin-bottom:52px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:22px}
+  .sec-head .no{font-size:13px;font-weight:700;color:#fff;background:var(--ink);padding:2px 10px;border-radius:4px}
+  .sec-head h2{font-size:23px;font-weight:700}
+  .sec-head .en{font-size:12px;color:var(--ink3);letter-spacing:1px}
+  h3{font-size:17px;font-weight:700;margin:26px 0 12px;color:var(--ink);padding-left:10px;border-left:4px solid var(--gold)}
+  p{margin-bottom:12px;color:var(--ink2)}
+  strong{color:var(--ink)}
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:760px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;text-align:center}
+  .stat .v{font-size:26px;font-weight:800;color:var(--gold-dark);line-height:1.2}
+  .stat .k{font-size:12.5px;color:var(--ink3);margin-top:4px}
+  .stat .s{font-size:11px;color:#b0a88f;margin-top:2px}
+  .callout{border-radius:10px;padding:16px 20px;margin:18px 0;font-size:14px}
+  .callout .t{font-weight:700;font-size:14.5px;margin-bottom:6px}
+  .c-gold{background:var(--gold-soft);border:1px solid #e5d9b0}
+  .c-ok{background:#eef6ee;border:1px solid #c4dcc4}
+  .c-warn{background:#fdf3e3;border:1px solid #f0d9ac}
+  .c-bad{background:#fdeeee;border:1px solid #f2c4c4}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px;background:var(--card);border-radius:8px;overflow:hidden}
+  th{background:#1f1c15;color:#f5f1e6;padding:10px 12px;text-align:left;font-weight:600;white-space:nowrap}
+  td{padding:10px 12px;border-top:1px solid var(--line);color:var(--ink2);vertical-align:top}
+  tr:hover td{background:#fbf9f3}
+  td.num,th.num{text-align:right;white-space:nowrap}
+  .pill{display:inline-block;font-size:11.5px;padding:1px 9px;border-radius:10px;font-weight:600;white-space:nowrap}
+  .p-ok{background:#e3f1e3;color:var(--ok)}
+  .p-warn{background:#fdf0da;color:var(--warn)}
+  .p-bad{background:#fbe3e3;color:var(--bad)}
+  .p-info{background:#e7eef5;color:#3a648c}
+  .src{font-size:11.5px;color:#a89f88}
+  .chart-box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:18px 0}
+  .chart-box .cap{font-size:13px;font-weight:700;margin-bottom:4px}
+  .chart-box .note{font-size:11.5px;color:var(--ink3);margin-top:8px}
+  .chart-h{position:relative;height:280px}
+  .verdict{background:linear-gradient(135deg,#1f1c15,#2e2617);color:#f5f1e6;border-radius:14px;padding:28px 30px;margin:20px 0}
+  .verdict h3{color:var(--gold);border:none;padding:0;margin:0 0 10px;font-size:15px;letter-spacing:1px}
+  .verdict .big{font-size:24px;font-weight:800;color:#fff;line-height:1.4;margin-bottom:10px}
+  .verdict p{color:#cfc8b8;font-size:14px;margin-bottom:8px}
+  .phase{position:relative;padding-left:28px;margin-bottom:26px}
+  .phase:before{content:"";position:absolute;left:8px;top:8px;bottom:-20px;width:2px;background:var(--line)}
+  .phase:last-child:before{display:none}
+  .phase .dot{position:absolute;left:2px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--gold);border:3px solid #fff;box-shadow:0 0 0 1px var(--gold)}
+  .phase h4{font-size:15.5px;font-weight:700;margin-bottom:6px}
+  .phase .when{font-size:12px;color:var(--gold-dark);font-weight:700;margin-bottom:6px}
+  .phase ul{padding-left:18px;color:var(--ink2);font-size:13.5px}
+  .phase li{margin-bottom:5px}
+  .toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 24px;margin-bottom:40px;font-size:13.5px}
+  .toc a{color:var(--gold-dark);text-decoration:none;margin-right:16px;display:inline-block;margin-bottom:6px}
+  .toc a:hover{text-decoration:underline}
+  .foot{border-top:1px solid var(--line);margin-top:60px;padding-top:24px;font-size:12px;color:var(--ink3)}
+  ul.tight{padding-left:20px;color:var(--ink2);font-size:14px}
+  ul.tight li{margin-bottom:7px}
+  .hl{background:linear-gradient(transparent 62%,#f3e3ae 62%);padding:0 2px;font-weight:700;color:var(--ink)}
+  .kv{display:flex;gap:8px;font-size:13.5px;margin-bottom:6px}
+  .kv b{min-width:96px;color:var(--ink)}
+  .kv span{color:var(--ink2)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="tag">MARKET RESEARCH · THAILAND</span>
+    <h1>泰国 TikTok Shop 一件代发选品调研报告</h1>
+    <p class="sub">轻资产跨境 · 基于 2025–2026 年最新市场数据,从销售价格、受众、利润率与泰国国情四个维度,给出最优入场品类与 90 天落地方案。</p>
+    <div class="meta">
+      <span>报告日期:2026-09-30</span>
+      <span>数据通路:公开市场数据 + 平台官方选品指南</span>
+      <span>汇率基准:1 CNY = 4.89 THB(2026-09-09 中间价)</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="toc">
+  <strong>目录:</strong>
+  <a href="#s1">① 市场大盘</a>
+  <a href="#s2">② 泰国国情</a>
+  <a href="#s3">③ 品类对比与结论</a>
+  <a href="#s4">④ 推荐品类深挖</a>
+  <a href="#s5">⑤ 价格带与利润模型</a>
+  <a href="#s6">⑥ 竞争格局</a>
+  <a href="#s7">⑦ 合规红线</a>
+  <a href="#s8">⑧ 90天落地方案</a>
+  <a href="#s9">⑨ 风险</a>
+  <a href="#s10">⑩ 数据来源</a>
+</div>
+
+<!-- ============ EXECUTIVE SUMMARY ============ -->
+<section id="s0">
+  <div class="verdict">
+    <h3>EXECUTIVE SUMMARY · 核心结论</h3>
+    <div class="big">推荐品类:时尚配饰 ——「太阳镜 + 日韩 ins 风 / Y2K 发饰小饰」组合打法</div>
+    <p>泰国是 2025 年东南亚增速最快的电商市场(约 +52%),TikTok Shop 在东南亚 GMV 达 456 亿美元、份额约 29%(Source: Momentum Works, 08/2026)。配饰类目在泰国属于<strong>免认证、单件 &lt;200g、无尺码退货、1688 货源 3–15 元</strong>的轻资产最优解;TikTok 官方选品指南明确指出泰国「日韩 ins 风饰品、Y2K 发饰」存在<strong>供给缺口</strong>(Source: TikTok Shop 官方《东南亚配饰珠宝选品指南》, 2024)。</p>
+    <p>按 299–499 泰铢主力价格带测算,纯自然流/自播口径<strong>净利率 25–35%</strong>,达人 15% 佣金口径仍可保住 <strong>15–20%</strong> 净利;90 天单店可达 1000 单/月量级,启动资金 3–6 万元即可覆盖,符合"轻资产一件代发"约束。</p>
+    <p>不推荐美妆(泰国 FDA 申报 + 液体空运受限 + 本土品牌垄断)、女装(尺码退货是代发天敌)、带电小家电(TISI 认证 + 电池空运受限)、保健品(FDA 高风险)。</p>
+  </div>
+  <div class="grid g4">
+    <div class="stat"><div class="v">$157.6B</div><div class="k">2025 东南亚平台电商 GMV</div><div class="s">YoY +22.8% · Momentum Works</div></div>
+    <div class="stat"><div class="v">+52%</div><div class="k">泰国市场增速(东南亚第一)</div><div class="s">2025 · 引自 Momentum Works 数据</div></div>
+    <div class="stat"><div class="v">6,540万</div><div class="k">泰国网民规模(2025.01)</div><div class="s">渗透率约 92% · 商务部国别指南</div></div>
+    <div class="stat"><div class="v">25–35%</div><div class="k">配饰主力价格带净利率</div><div class="s">本报告测算(见 §5 模型)</div></div>
+  </div>
+</section>
+
+<!-- ============ S1 MARKET ============ -->
+<section id="s1">
+  <div class="sec-head"><span class="no">01</span><h2>市场大盘:泰国值不值得打</h2><span class="en">MARKET OVERVIEW</span></div>
+
+  <h3>1.1 东南亚:全球电商增速最高的区域之一</h3>
+  <p>2025 年东南亚平台电商 GMV 达 <strong>1576 亿美元</strong>,同比增长 22.8%,其中 Shopee(832 亿,约 53%)、TikTok Shop(456 亿,约 29%)、Lazada(269 亿,约 17%)三大平台合计占 98.8%(Source: Momentum Works《E-commerce in Southeast Asia 2025》, 08/2026)。内容电商(直播+短视频)贡献了东南亚平台电商约 32% 的 GMV——<span class="hl">这正是 TikTok 的主场</span>。</p>
+  <p>TikTok Shop 2025 年全球 GMV 643 亿美元(+94%),其中东南亚 456 亿美元、三年增长近 10 倍(44→456 亿美元),是平台增长核心引擎(Source: Momentum Works, 08/2026)。</p>
+
+  <div class="chart-box">
+    <div class="cap">东南亚三大平台 2025 GMV 对比(亿美元)</div>
+    <div class="chart-h"><canvas id="chartPlatform"></canvas></div>
+    <div class="note">Source: Momentum Works《E-commerce in Southeast Asia 2025》, 08/2026 · 平台电商口径</div>
+  </div>
+
+  <h3>1.2 泰国:东南亚增长第一 + 消费力中游偏上</h3>
+  <ul class="tight">
+    <li><strong>泰国是 2025 年东南亚增速最快的市场(约 +52%)</strong>,TikTok Shop 泰国站直播电商 GMV 同比 +300%(Source: 引自 Momentum Works 区域数据 / socialecho, 2026)。</li>
+    <li>2025 年 1–10 月泰国电商平台销售总收入 <strong>7490–8025 亿泰铢</strong>(约 1530–1640 亿元),THECA 预计全年 70–75%(Source: THECA 经 NBT World 报道, 06/2026)。</li>
+    <li>第三方统计:TikTok Shop 泰国站 2025 年平台收入(佣金/服务费口径)<strong>544 亿泰铢,同比增逾 4 倍,市占率排名第二</strong>(Shopee 第一)。<span class="pill p-warn">⚠️ 单一来源估算,建议核实</span>(Source: 跨境电商研究机构报道, 2026)</li>
+    <li>宏观基本盘:人口约 7100 万,2023 年人均 GDP 7172 美元,电商市场规模约 220 亿美元;消费特征 = <strong>重配送时效、需使用场景刺激、情绪型消费</strong>(Source: 世界银行 2023 / TikTok 官方选品指南 2024)。</li>
+    <li>泰国 2024 年 CPI 仅 +0.4%——<span class="hl">低通胀 = 强价格敏感市场</span>,定价必须卡在心理价位(99/199 尾数),且建议比本地竞品低 10–15%(Source: 商务部《对外投资国别指南》2025 / 卖家实操指南, 2025-04)。</li>
+  </ul>
+
+  <h3>1.3 泰国 TikTok Shop 热销品类 TOP5(近 30 天口径)</h3>
+  <div class="chart-box">
+    <div class="cap">泰国站销量 TOP5 类目(2024-03 口径,单位:亿元泰铢)</div>
+    <div class="chart-h"><canvas id="chartTopCate"></canvas></div>
+    <div class="note">Source: TT123 泰国畅销品盘点, 2024-03 · 美妆个护 30 天销量 1000 万+件 / 20 亿+泰铢;该数据为 2024 年初口径,2025–2026 美妆类目地位仍居第一(见 §6)</div>
+  </div>
+  <p>结构解读:<strong>美妆个护是第一大类目</strong>(东南亚四国:印尼/越南/泰国/菲律宾均为第一,2024.7–2025.6 东南亚美妆个护 GMV 59 亿美元,Source: Echotik 报告, 01/2026)。但"最大"不等于"最适合轻资产代发入场"——§3 会给出六品类对比结论。</p>
+</section>
+
+
+<!-- ============ S2 THAILAND CONTEXT ============ -->
+<section id="s2">
+  <div class="sec-head"><span class="no">02</span><h2>泰国国情:选品必须对齐的 6 个现实</h2><span class="en">COUNTRY CONTEXT</span></div>
+  <p>选品不是"看哪里卖得多",而是"这个市场的气候、宗教、支付习惯、价格心理会不会替你买单"。泰国六个国情维度对选品的直接映射如下:</p>
+  <table>
+    <tr><th style="width:110px">国情维度</th><th style="width:38%">事实(带来源)</th><th>对选品的含义</th></tr>
+    <tr>
+      <td><strong>气候</strong></td>
+      <td>热带季风,全年 28–35°C,紫外线强;5–10 月雨季;4 月中上旬泼水节(宋干节)为全年最大节日</td>
+      <td><span class="pill p-ok">利好</span> 防晒/墨镜是<span class="hl">全年刚需</span>而非季节性商品;变色、UV400 是核心卖点;防水抗泼(宋干节)是差异化钩子;发饰=热天扎高发型的日常刚需</td>
+    </tr>
+    <tr>
+      <td><strong>宗教</strong></td>
+      <td>90%+ 上座部佛教;宗教禁忌严格(Source: 卖家实操指南, 2025-04)</td>
+      <td><span class="pill p-bad">红线</span> 禁止佛像/圣物图案、真皮动物纹样、军政元素;白色为丧事色,包装慎用;金色/珍珠色/糖果色受欢迎</td>
+    </tr>
+    <tr>
+      <td><strong>人口与用户</strong></td>
+      <td>人口约 7100 万;网民 6540 万(2025-01,渗透率约 92%);核心消费力集中在 16–35 岁女性,社媒高度活跃(Source: 商务部国别指南 2025 / TikTok 官方选品指南 2024)</td>
+      <td><span class="pill p-ok">利好</span> 16–35 女性正是 TikTok 内容电商主力,与配饰目标客群 100% 重合;短视频"试戴"内容天然适配</td>
+    </tr>
+    <tr>
+      <td><strong>支付与履约</strong></td>
+      <td>COD 货到付款占比 60%+;TrueMoney、PromptPay 普及;线上支付订单客单价高 27%;曼谷消费者期望 3 日达(Source: 卖家实操指南, 2025-04)</td>
+      <td><span class="pill p-warn">注意</span> 低客单价商品 COD 拒收率低,适配;但时效敏感 → 打爆后必须切本土仓(2–4 日达),纯跨境直邮 7–15 天只能做测品期</td>
+    </tr>
+    <tr>
+      <td><strong>消费心理</strong></td>
+      <td>CPI +0.4% 强价格敏感;99/199 泰铢尾数定价效应;情绪消费 + 使用场景刺激;活跃高峰 20:00–01:00;K-pop/泰流偶像文化盛行,IP 狂热(Butterbear、Crybaby 常年热搜)(Source: 商务部 2025 / TT123, 2025-04 / TikTok 官方 2024)</td>
+      <td><span class="pill p-ok">利好</span> "平价悦己"是配饰的天然土壤;Y2K 女团风、日韩 ins 风是本土审美原生需求;20 点后的黄金 4 小时排内容与排班</td>
+    </tr>
+    <tr>
+      <td><strong>2026 新政</strong></td>
+      <td>2026-01-01 起取消 1500 泰铢以下进口免税,所有进口商品征收关税 + 7% VAT;现低价进口年规模 300 亿+泰铢(Source: 泰国海关总署经 Retail News Asia, 11/2025)</td>
+      <td><span class="pill p-bad">利空低价</span> 9.9/99 泰铢超低价小件利润被关税+VAT 吃掉;定价必须 ≥199 泰铢并把税计入模型;平台代收模式是唯一合规通路</td>
+    </tr>
+  </table>
+  <div class="callout c-gold">
+    <div class="t">📌 国情综合判断</div>
+    泰国 = <strong>"热 + 年轻女性 + 价格敏感 + 情绪消费 + 强内容驱动"</strong>的叠加市场。最优品类画像:轻(空运便宜)、无尺码(退货低)、无认证(合规零门槛)、全年无季节死角(气候刚需或高频佩戴)、内容可表演(试戴/场景)、客单 199–499 泰铢(税改后仍有利润)。<strong>配饰是唯一同时命中全部 6 项的品类。</strong>
+  </div>
+</section>
+
+<!-- ============ S3 CATEGORY COMPARISON ============ -->
+<section id="s3">
+  <div class="sec-head"><span class="no">03</span><h2>六大候选品类对比:为什么是配饰</h2><span class="en">CATEGORY SELECTION</span></div>
+  <p>以"轻资产一件代发"为约束,用 7 个维度打分(★1–5,越高越适合代发入场):</p>
+  <table>
+    <tr>
+      <th>候选品类</th><th class="num">市场热度</th><th class="num">物流友好</th><th class="num">合规门槛</th><th class="num">退货友好</th><th class="num">利润率</th><th class="num">竞争烈度</th><th class="num">内容传播</th><th class="num">总分/35</th><th>判定</th>
+    </tr>
+    <tr>
+      <td><strong>时尚配饰(墨镜/发饰/小饰品)</strong></td>
+      <td class="num">★★★★☆</td><td class="num">★★★★★</td><td class="num">★★★★★</td><td class="num">★★★★★</td><td class="num">★★★★★</td><td class="num">★★★★☆</td><td class="num">★★★★★</td>
+      <td class="num"><strong>33</strong></td><td><span class="pill p-ok">✅ 首选入场</span></td>
+    </tr>
+    <tr>
+      <td>美妆个护(泰国第一大类目)</td>
+      <td class="num">★★★★★</td><td class="num">★★☆☆☆<br><span class="src">液体/敏感货空运受限</span></td><td class="num">★★☆☆☆<br><span class="src">泰国 FDA 强制申报</span></td><td class="num">★★★★☆</td><td class="num">★★★☆☆</td><td class="num">★★☆☆☆<br><span class="src">本土品牌垄断</span></td><td class="num">★★★★★</td>
+      <td class="num">20</td><td><span class="pill p-bad">❌ 代发高危</span></td>
+    </tr>
+    <tr>
+      <td>女装</td>
+      <td class="num">★★★★★</td><td class="num">★★★☆☆</td><td class="num">★★★★☆</td><td class="num">★★☆☆☆<br><span class="src">尺码退货率最高</span></td><td class="num">★★★☆☆</td><td class="num">★★☆☆☆</td><td class="num">★★★★☆</td>
+      <td class="num">21</td><td><span class="pill p-warn">⚠️ 有门槛,非首选</span></td>
+    </tr>
+    <tr>
+      <td>带电小家电(风扇等)</td>
+      <td class="num">★★★☆☆</td><td class="num">★★☆☆☆<br><span class="src">电池空运受限</span></td><td class="num">★★☆☆☆<br><span class="src">TISI 电气认证</span></td><td class="num">★★★★☆</td><td class="num">★★★★☆</td><td class="num">★★★☆☆</td><td class="num">★★★★☆</td>
+      <td class="num">20</td><td><span class="pill p-bad">❌ 认证+物流双重门槛</span></td>
+    </tr>
+    <tr>
+      <td>保健品/补剂(虾青素等)</td>
+      <td class="num">★★★★☆</td><td class="num">★★★☆☆</td><td class="num">★★☆☆☆<br><span class="src">FDA 食品药品监管</span></td><td class="num">★★★★☆</td><td class="num">★★★★☆</td><td class="num">★★★☆☆</td><td class="num">★★★★☆</td>
+      <td class="num">22</td><td><span class="pill p-bad">❌ 高风险类目</span></td>
+    </tr>
+    <tr>
+      <td>宠物用品</td>
+      <td class="num">★★★☆☆</td><td class="num">★★★★☆</td><td class="num">★★★★☆</td><td class="num">★★★★☆</td><td class="num">★★★☆☆</td><td class="num">★★★★☆</td><td class="num">★★★★☆</td>
+      <td class="num">25</td><td><span class="pill p-info">备选(第二增长曲线)</span></td>
+    </tr>
+  </table>
+  <p class="src">评分依据:市场热度 = 泰国站销量榜地位;物流 = 重量/敏感货/电池;合规 = 泰国当地认证要求;退货 = 尺码与主观因素;利润率 = 1688 货源价 vs 泰国站售价带;竞争 = 本土品牌/白牌密度;内容 = TikTok 视频可表演度。综合 §2 国情与 §5 利润模型测算。</p>
+
+  <div class="callout c-ok">
+    <div class="t">✅ 结论:时尚配饰,双轮驱动</div>
+    <strong>标品引流轮:太阳镜</strong>(女款变色/猫眼 + 男款运动 UV)——泰国热搜 TOP 词,功能性(防晒)让 16–35 岁男性女性通吃;<br>
+    <strong>非标利润轮:发饰 + 日韩 ins / Y2K 风小饰品</strong>——TikTok 官方指南点名的"供给缺口"款式,复购高、客单可做套装;<br>
+    <strong>组合逻辑:</strong>墨镜撑客单与功能心智,发饰小饰品撑复购与内容量,两者重量叠加后仍 &lt;500g/单,物流成本可控。
+  </div>
+</section>
+
+<!-- ============ S4 PICKED CATEGORY ============ -->
+<section id="s4">
+  <div class="sec-head"><span class="no">04</span><h2>推荐品类深挖:时尚配饰怎么做泰国</h2><span class="en">CATEGORY DEEP-DIVE</span></div>
+
+  <h3>4.1 泰国站配饰市场的官方画像(TikTok 选品指南)</h3>
+  <div class="grid g3">
+    <div class="card">
+      <h3 style="margin-top:0">客群与客单</h3>
+      <p class="kv"><b>核心客群</b><span>16–35 岁女性为主,社媒活跃,情绪消费</span></p>
+      <p class="kv"><b>客单价</b><span>时尚配饰 $1–6(约 50–290 泰铢);珠宝 $5–50</span></p>
+      <p class="kv"><b>泰国热销带</b><span>墨镜饰品 $2–4 / 发饰 $1–3 / 手表 $4–8</span></p>
+      <p class="src">Source: TikTok Shop 官方《东南亚配饰珠宝选品指南》, 2024(品类最权威一手口径,2025–2026 热销结构未见颠覆性变化)</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">款式偏好</h3>
+      <ul class="tight" style="font-size:13px">
+        <li>日韩 ins 风(饰品)</li>
+        <li>Y2K 女团风(饰品+发饰)</li>
+        <li>欧美辣妹风(墨镜/项链)</li>
+      </ul>
+      <p class="src">泰国 K-pop/泰流偶像文化兴盛,Y2K 女团风是本土审美原生需求</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">官方点名的供给缺口</h3>
+      <ul class="tight" style="font-size:13px">
+        <li><strong>日韩 ins 风饰品:供给少</strong></li>
+        <li><strong>Y2K 女团风饰品:供给少</strong></li>
+        <li><strong>Y2K 女团风发饰:供给少</strong></li>
+        <li>女款手表:市场空白(简约优雅款)</li>
+      </ul>
+      <p class="src">Source: TikTok 官方选品指南, 2024 —— 缺口即入场窗口</p>
+    </div>
+  </div>
+
+  <h3>4.2 泰国站热搜关键词(内容选题库)</h3>
+  <p>官方抓取的泰国站热搜:<strong>墨镜(แว่นตากันแดด)、发夹、假发、Casio 手表、项链、Crybaby 挂件、Butterbear 挂件、三丽鸥发夹</strong>(Source: TikTok 官方选品指南泰国热搜词, 2024)。</p>
+  <div class="callout c-warn">
+    <div class="t">⚠️ 热搜里的 IP 不能碰</div>
+    Butterbear(泰国旅游吉祥物熊)、Crybaby(泰国本土艺术家 IP)、Sanrio/迪士尼、Casio 均为受保护品牌/IP——<strong>热度真实存在,但抄 IP 会封店</strong>。正确姿势:做"同风格"——可爱萌系毛绒感挂件、卡通糖果色发夹,吃"可爱经济"的审美红利,不碰具体形象。
+  </div>
+
+  <h3>4.3 产品矩阵(30–50 SKU 起步盘)</h3>
+  <table>
+    <tr><th>角色</th><th class="num">SKU 数</th><th>具体产品</th><th class="num">定价(泰铢)</th><th>使命</th></tr>
+    <tr>
+      <td><span class="pill p-bad">引流款</span></td><td class="num">5–8</td>
+      <td>单支发夹/抓夹、发圈套装、极简耳钉(1 件装,≤100g)</td>
+      <td class="num">99–149</td>
+      <td>拉新 + 测转化,限购 1 件,不指望利润(§5 测算:99 泰铢单件在 2026 税制下为负毛利)</td>
+    </tr>
+    <tr>
+      <td><span class="pill p-ok">主力款</span></td><td class="num">10–15</td>
+      <td>女款太阳镜(变色/猫眼/椭圆复古,UV400)、发饰 3–5 件套装、日韩 ins 珍珠/金属饰品套装</td>
+      <td class="num">199–299</td>
+      <td>利润主力,净利率 25–35%(§5)</td>
+    </tr>
+    <tr>
+      <td><span class="pill p-info">形象款</span></td><td class="num">5–8</td>
+      <td>高级感变色墨镜(499)、墨镜+发饰+项链三件套礼盒(599–699,节庆礼赠)</td>
+      <td class="num">499–699</td>
+      <td>拉高客单与店铺档次,宋干节/水灯节礼赠场景</td>
+    </tr>
+    <tr>
+      <td><span class="pill p-info">储备款</span></td><td class="num">10–15</td>
+      <td>男款运动墨镜、Y2K 女团风发饰(蝴蝶结/星星/糖果色)、头带、发箍</td>
+      <td class="num">199–299</td>
+      <td>每 2 周上新迭代,保持店铺新鲜度</td>
+    </tr>
+  </table>
+
+  <h3>4.4 为什么是这个品类 —— 优势总结</h3>
+  <ul class="tight">
+    <li><strong>利润结构最优:</strong>1688 货源 3–15 元,卖 199–499 泰铢(约 40–100 元),售价是采购价 6–15 倍;扣除全部费用后净利率 25–35%,是六大候选中唯一"2026 税改后仍厚利"的品类。</li>
+    <li><strong>物流成本最低:</strong>单件 50–250g,泰线空运 3–7 天、妥投率 98.7%(Source: 物联通, 03/2026),首程成本 ¥10–25/单,占售价 &lt;25%。</li>
+    <li><strong>合规零门槛:</strong>非食品非化妆品非电器,无泰国 FDA/TISI 申报要求,上新即合规,测品速度是美妆/家电的 5–10 倍。</li>
+    <li><strong>退货率最低:</strong>无尺码问题,行业均值 8–15%,配饰取下限 5–10%(Source: 数智掌帐, 2025)。</li>
+    <li><strong>内容表现力最强:</strong>"试戴 3 秒换风格"是 TikTok 原生爆款内容形态;对齐泰国 20:00–01:00 黄金档,内容制作成本 ≈ 0(自拍+剪辑)。</li>
+    <li><strong>官方认证的供给缺口:</strong>日韩 ins 风、Y2K 风饰品/发饰在泰国被官方选品指南点名"供给少"——不是内卷赛道,是填空赛道。</li>
+    <li><strong>全年无淡季:</strong>防晒=热带国家功能刚需;发饰=全年发型刚需;宋干节/水灯节还有礼赠峰值。</li>
+    <li><strong>轻资产完全匹配:</strong>0 库存(1688 一件代发)、0 保证金(新店 90 天免保,一证可开多店,Source: 启财鹰, 2026)、0 认证、设备投入 &lt;1500 元。</li>
+  </ul>
+</section>
+
+
+<!-- ============ S5 MARGIN MODEL ============ -->
+<section id="s5">
+  <div class="sec-head"><span class="no">05</span><h2>价格带与利润模型:每一铢花在哪</h2><span class="en">PRICING & UNIT ECONOMICS</span></div>
+
+  <h3>5.1 2026 年泰国站费用结构(全费用口径)</h3>
+  <table>
+    <tr><th>费用项</th><th class="num">费率/金额</th><th>备注</th></tr>
+    <tr><td>平台佣金(类目)</td><td class="num">最高 8.56%(普通店)/ 9.63%(Mall)</td><td>2026-05-06 起泰国站多类目上调(Source: 妙手跨境学院, 08/2026)</td></tr>
+    <tr><td>泰国 VAT</td><td class="num">7%(含税价)</td><td>所有商品,平台代收</td></tr>
+    <tr><td>进口关税(2026 新政)</td><td class="num">按 HS 编码,低价件平均约 10%</td><td>2026-01-01 起取消 1500 泰铢免税,按 CIF 完税价计(Source: Retail News Asia, 11/2025)</td></tr>
+    <tr><td>SFP 包邮计划费</td><td class="num">3%</td><td>入包邮池的订单(Source: 妙手, 08/2026)</td></tr>
+    <tr><td>交易/提现手续费</td><td class="num">约 1.5%</td><td>按实际结算口径浮动</td></tr>
+    <tr><td>跨境基础设施费</td><td class="num">1.07 泰铢/单</td><td>2025-10-01 起,跨境店每笔成功交付订单(Source: 腾讯新闻, 09/2025)</td></tr>
+    <tr><td>达人佣金(可选)</td><td class="num">15–20%</td><td>纯佣合作为主;泰区中腰部达人(5K–50K 粉)视频刊例 5K–20K 泰铢(Source: TT123, 2025-04)</td></tr>
+    <tr><td>退货损耗</td><td class="num">按 5–10% 计提</td><td>行业均值 8–15%,配饰取下限(Source: 数智掌帐, 2025)</td></tr>
+  </table>
+
+  <h3>5.2 单件 P&L(3 个关键价格点,1 CNY = 4.9 THB)</h3>
+  <table>
+    <tr><th>成本项</th><th class="num">A · 引流款发夹 99฿(50g)</th><th class="num">B · 主力款发饰套装 299฿(150g)</th><th class="num">C · 形象款变色墨镜 499฿(250g)</th></tr>
+    <tr><td>售价折合人民币</td><td class="num">¥20.2</td><td class="num">¥61.0</td><td class="num">¥101.8</td></tr>
+    <tr><td>1688 采购</td><td class="num">-¥2.5</td><td class="num">-¥6</td><td class="num">-¥15</td></tr>
+    <tr><td>国内头程+包装</td><td class="num">-¥2.0</td><td class="num">-¥2.5</td><td class="num">-¥3.0</td></tr>
+    <tr><td>跨境空运专线(DDP)</td><td class="num">-¥10</td><td class="num">-¥12</td><td class="num">-¥20</td></tr>
+    <tr><td>平台佣金 8.56%</td><td class="num">-¥1.7</td><td class="num">-¥5.2</td><td class="num">-¥8.7</td></tr>
+    <tr><td>VAT 7%(含税价)</td><td class="num">-¥1.3</td><td class="num">-¥4.0</td><td class="num">-¥6.7</td></tr>
+    <tr><td>SFP 3%</td><td class="num">-¥0.6</td><td class="num">-¥1.8</td><td class="num">-¥3.1</td></tr>
+    <tr><td>交易/提现 1.5%</td><td class="num">-¥0.3</td><td class="num">-¥0.9</td><td class="num">-¥1.5</td></tr>
+    <tr><td>关税 ~10%(按 CIF)</td><td class="num">-¥1.0</td><td class="num">-¥2.0</td><td class="num">-¥3.8</td></tr>
+    <tr><td>退货损耗(10% / 8% / 5%)</td><td class="num">-¥2.0</td><td class="num">-¥4.9</td><td class="num">-¥5.1</td></tr>
+    <tr style="background:var(--gold-soft)"><td><strong>净利(自然流/自播口径)</strong></td><td class="num"><strong style="color:var(--bad)">-¥1.3(亏 6%)</strong></td><td class="num"><strong style="color:var(--ok)">+¥20.8(34%)</strong></td><td class="num"><strong style="color:var(--ok)">+¥35.0(34%)</strong></td></tr>
+    <tr><td>若加 15% 达人佣金</td><td class="num" style="color:var(--bad)">-¥4.2</td><td class="num" style="color:var(--ok)">+¥14.7(24%)</td><td class="num" style="color:var(--ok)">+¥19.7(19%)</td></tr>
+  </table>
+  <p class="src">注:首程物流按泰线空运专线 0.1–0.3kg 件均 ¥10–25 估(货代公开报价区间,03/2026),实际以货代报价为准;VAT 按含税售价中 7% 部分计提;所有费用已含 2026 关税新政。</p>
+
+  <div class="chart-box">
+    <div class="cap">三种价格点的成本结构拆解(人民币,占售价 %:99฿ 款总成本 105% → 亏损)</div>
+    <div class="chart-h"><canvas id="chartPL"></canvas></div>
+    <div class="note">结论:99 泰铢单件在 2026 税制下为负毛利 → 只做引流;利润必须从 199–499 泰铢的主力/形象款与套装中获取</div>
+  </div>
+
+  <div class="callout c-warn">
+    <div class="t">💡 定价三定律(泰国市场)</div>
+    ① <strong>尾数 9</strong>:99/199/299/399/499,符合本地价格心理;② <strong>比本地竞品低 10–15%</strong>:跨境无品牌溢价,价格是唯一武器;③ <strong>单件 ≥199 起</strong>:税改后 99 档不赚钱,用"3 件套/5 件套"把 9.9 元的货做成 299 泰铢的货。
+  </div>
+
+  <h3>5.3 月度盈亏推演(单店,自然流+自播为主,达人占比 ≤30%)</h3>
+  <div class="chart-box">
+    <div class="cap">90 天 GMV 与净利推演(人民币)</div>
+    <div class="chart-h"><canvas id="chartMonthly"></canvas></div>
+    <div class="note">假设:月1 测品 150 单 → 月2 放量 400 单 → 月3 稳定 800 单,客单 280–310฿,混合净利率 15%→22%;未计广告费(投放期净利更薄,见 §8 预算)</div>
+  </div>
+  <table>
+    <tr><th>阶段</th><th class="num">月订单</th><th class="num">月 GMV</th><th class="num">混合净利率</th><th class="num">月净利</th><th>状态</th></tr>
+    <tr><td>第 1 月(测品)</td><td class="num">150</td><td class="num">¥8,600</td><td class="num">15%</td><td class="num">¥1,300</td><td><span class="pill p-warn">微利/打平</span></td></tr>
+    <tr><td>第 2 月(放量)</td><td class="num">400</td><td class="num">¥24,500</td><td class="num">18%</td><td class="num">¥4,400</td><td><span class="pill p-ok">正向现金流</span></td></tr>
+    <tr><td>第 3 月(稳定)</td><td class="num">800</td><td class="num">¥50,600</td><td class="num">22%</td><td class="num">¥11,100</td><td><span class="pill p-ok">稳定盈利</span></td></tr>
+    <tr><td>第 6 月(矩阵化,2–3 爆款+本土仓)</td><td class="num">2,000</td><td class="num">¥130,000</td><td class="num">24%</td><td class="num">¥31,000</td><td><span class="pill p-ok">规模化</span></td></tr>
+  </table>
+</section>
+
+<!-- ============ S6 COMPETITION ============ -->
+<section id="s6">
+  <div class="sec-head"><span class="no">06</span><h2>竞争格局:避开本土巨头,填空白供给</h2><span class="en">COMPETITIVE LANDSCAPE</span></div>
+  <div class="grid g2">
+    <div class="card">
+      <h3 style="margin-top:0">对手地图</h3>
+      <table>
+        <tr><th>阵营</th><th>代表</th><th>强项</th><th>弱点(我们的机会)</th></tr>
+        <tr><td>本土美妆巨头</td><td>Mistine、Cathy Doll、X5、glad2glow</td><td>品牌心智+本土仓+KOL 矩阵</td><td>只做美妆,不碰配饰</td></tr>
+        <tr><td>跨境白牌卖家</td><td>1688 同款铺货店(大量)</td><td>价格低、SKU 多</td><td>无款式企划、内容同质化、上新慢</td></tr>
+        <tr><td>本土线下/批发市场</td><td>Chatuchak 市场、饰品小店</td><td>可试戴、即时拿到</td><td>款式陈旧、无内容触达</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">差异化打法(4 条)</h3>
+      <ul class="tight" style="font-size:13.5px">
+        <li><strong>款式填空:</strong>只做官方点名的缺口款式(日韩 ins / Y2K 女团风),白牌铺货店做不出企划;</li>
+        <li><strong>内容速度:</strong>每周 15–20 条试戴短视频,3 天内跟随 TikTok 站内趋势迭代;</li>
+        <li><strong>价格压强:</strong>同款式比本地竞品低 10–15%,卡 199/299 尾数;</li>
+        <li><strong>上新频率:</strong>2 周一个新品周期,店铺永远"有新款"——铺货店和线下店都做不到这个心智。</li>
+      </ul>
+    </div>
+  </div>
+  <p>美妆类目数据参照:泰国美妆 TOP10 店铺门槛约 $500 万 GMV、主力客单 $10–20,60% 洗护单品集中在 $0–10 价格带——<span class="hl">头部被本土品牌锁死、中腰部极度内卷</span>,与配饰的"无霸主、填空白"格局完全不同(Source: Echotik 东南亚美妆报告, 2025–2026)。</p>
+</section>
+
+<!-- ============ S7 COMPLIANCE ============ -->
+<section id="s7">
+  <div class="sec-head"><span class="no">07</span><h2>合规红线:泰国市场 6 条不可越线</h2><span class="en">COMPLIANCE & RED LINES</span></div>
+  <table>
+    <tr><th style="width:150px">红线</th><th>规则</th><th>落地动作</th></tr>
+    <tr>
+      <td><strong>① 税改(2026)</strong></td>
+      <td>取消 1500 泰铢免税,所有进口征关税+7% VAT,平台数据直连海关稽核(Source: 泰国海关, 11/2025)</td>
+      <td>走 TikTok 官方跨境物流/合规平台通路,DDP 含税定价,不做灰关;主力定价 ≥199 泰铢</td>
+    </tr>
+    <tr>
+      <td><strong>② 知识产权</strong></td>
+      <td>Disney/Sanrio/Butterbear/Crybaby/Casio 等均为受保护 IP;售假封店+追偿</td>
+      <td>只做"同风格非同款":萌系/糖果色/女团风通用设计;1688 无 IP 货源,标题不带品牌词</td>
+    </tr>
+    <tr>
+      <td><strong>③ 宗教与文化</strong></td>
+      <td>佛像/圣物图案、动物真皮纹样、军政元素禁止;白色为丧事色</td>
+      <td>选品审核清单化:图案过审后才上架;包装用金色/糖果色/牛皮纸</td>
+    </tr>
+    <tr>
+      <td><strong>④ 类目合规(反向验证选品)</strong></td>
+      <td>化妆品/食品/保健品须泰国 FDA 申报;电器须 TISI;配饰类目无强制认证</td>
+      <td>这就是不碰美妆/家电/保健品的根本原因;配饰上新即合规</td>
+    </tr>
+    <tr>
+      <td><strong>⑤ 宣传合规</strong></td>
+      <td>不得虚假功能宣称(如未检测的"UV400 认证")、不得医疗化用语</td>
+      <td>墨镜宣称防紫外线需货源有检测报告;话术用"变色/遮阳",不写"认证级 UV400"除非有证</td>
+    </tr>
+    <tr>
+      <td><strong>⑥ 物流风险</strong></td>
+      <td>2025 年曼谷雨季洪涝曾导致大面积订单取消(Source: TT123, 2025)</td>
+      <td>双线货代备份;雨季(7–10 月)发货时效话术预留缓冲;爆品本土仓前置</td>
+    </tr>
+  </table>
+  <div class="callout c-bad">
+    <div class="t">🚫 一句话:合规成本决定了品类</div>
+    在"一件代发"模式下,任何需要<em>本地注册、本地检测、本地申报</em>的品类(美妆 FDA、电器 TISI、食品)的合规成本都无法被 20–30% 的净利覆盖。<strong>配饰是泰国市场里少数"合规成本≈0"的高需求品类</strong>——这是 2026 税改后平台收紧稽查下的结构性机会。
+  </div>
+</section>
+
+
+<!-- ============ S8 ACTION PLAN ============ -->
+<section id="s8">
+  <div class="sec-head"><span class="no">08</span><h2>90 天落地方案:从 0 到月入 1 万</h2><span class="en">90-DAY ACTION PLAN</span></div>
+
+  <h3>8.1 启动预算(轻资产口径,单人+1 兼职剪辑)</h3>
+  <table>
+    <tr><th>项目</th><th class="num">金额</th><th>说明</th></tr>
+    <tr><td>店铺保证金</td><td class="num">¥0</td><td>新店前 90 天免保证金(Source: 启财鹰, 2026)</td></tr>
+    <tr><td>选品打样(40–60 SKU)</td><td class="num">¥1,500</td><td>1688 拿样,含运费</td></tr>
+    <tr><td>内容设备(补光灯/支架/道具)</td><td class="num">¥1,000</td><td>一次性投入</td></tr>
+    <tr><td>跨境物流首月垫资</td><td class="num">¥5,000</td><td>空运专线 DDP</td></tr>
+    <tr><td>投流测试(Growth+)</td><td class="num">¥3,000–5,000/月</td><td>仅给已验证的 1–2 个爆款加投</td></tr>
+    <tr><td>达人寄样(纯佣合作)</td><td class="num">¥2,000</td><td>50–100 件样品,不付坑位费</td></tr>
+    <tr><td>ERP/工具(可选)</td><td class="num">¥0–500</td><td>先用平台自带工具</td></tr>
+    <tr><td>3–6 个月运营备用金</td><td class="num">¥20,000–30,000</td><td>现金流缓冲,应对退货/汇率/滞销</td></tr>
+    <tr style="background:var(--gold-soft)"><td><strong>合计</strong></td><td class="num"><strong>¥30,000–60,000</strong></td><td>其中 75%+ 是流动资金而非固定资产 → 轻资产成立</td></tr>
+  </table>
+
+  <h3>8.2 四阶段执行</h3>
+
+  <div class="phase"><span class="dot"></span>
+    <div class="when">PHASE 0 · 第 1–2 周 | 基建</div>
+    <h4>开店 + 供应链搭好(本周必做)</h4>
+    <ul>
+      <li>注册 TikTok Shop 泰国跨境店(中国大陆主体,免保证金窗口期内完成;一证可开多店,为后续矩阵留口子)</li>
+      <li>1688 锁定 3–5 家供应商:太阳镜(变色/猫眼,必须有防紫外线检测报告的)、发饰(义乌/广州产业带)、饰品(日韩 ins 风);每个主力款 <strong>≥2 家备选</strong>,谈好一件代发 + 48h 发货</li>
+      <li>物流双选:① TikTok 官方跨境物流(合规兜底)② 一家泰线空运专线货代(比价,0.1/0.2/0.3kg 三档报价),确认 DDP 含税、COD 支持、时效 7–12 天</li>
+      <li>建价格表(§5 模型直接套用):所有 SKU 按 99/199/299/399/499 尾数定价,比本地同款低 10–15%</li>
+      <li>首批 20 个 SKU 上架(5 引流+10 主力+5 形象),主图统一"模特试戴 3 宫格"模板,标题含泰文热搜词(แว่นตากันแดด 等)</li>
+    </ul>
+  </div>
+
+  <div class="phase"><span class="dot"></span>
+    <div class="when">PHASE 1 · 第 3–6 周 | 测品</div>
+    <h4>内容轰炸,跑出 1–2 个爆款</h4>
+    <ul>
+      <li><strong>每天 3 条短视频</strong>(20:00–23:00 发布,对齐泰国黄金档):试戴变装 / 场景痛点(大太阳下晒黑→墨镜)/ 套装开箱;自拍自剪,单条成本 ≈0</li>
+      <li>引流款 99 泰铢挂购物车限购 1 件,拉店铺权重与初始评价(目标 30 个 5 星好评再放量)</li>
+      <li>周复盘三指标:<strong>点击→转化率、单 SKU 出单数、退货率</strong>;连续 2 周 0 单的 SKU 直接下架换新款</li>
+      <li>达人侧:首批寄 30 件样品给 15 个 5K–50K 粉中腰部达人(纯佣 15%),铺"素人感"种草</li>
+      <li>KPI:<strong>100+ 单、1–2 个 SKU 出单 50+</strong></li>
+    </ul>
+  </div>
+
+  <div class="phase"><span class="dot"></span>
+    <div class="when">PHASE 2 · 第 7–10 周 | 放量</div>
+    <h4>爆品切本土仓,达人矩阵放大</h4>
+    <ul>
+      <li>对 TOP3 SKU 下 300–500 件到泰国本土仓/第三方仓(约 ¥1–2 万,占用资金可控),发货时效 7–12 天 → 2–4 天,转化率与复购双升</li>
+      <li>达人扩到 50–100 个,纯佣为主;对出单 TOP10 达人谈 5K–10K 泰铢固定合作</li>
+      <li>Growth+ 投流只投已验证爆款,日预算 ¥150–300 起步,ROI &lt;2 即停</li>
+      <li>开自播:每天 20:00–24:00 播 2–4 小时(试戴+整套装搭配),主播话术用泰语模板(前期可用 AI 翻译+本地兼职)</li>
+      <li>报名 SFP 包邮池(3% 费用换流量池曝光)</li>
+      <li>KPI:<strong>500+ 单、GMV ¥2 万+、退货率 &lt;8%、店铺评分 4.7+</strong></li>
+    </ul>
+  </div>
+
+  <div class="phase"><span class="dot"></span>
+    <div class="when">PHASE 3 · 第 11–13 周 | 系统化 + 大促</div>
+    <h4>吃 11.11 / 12.12 红利,搭复制模板</h4>
+    <ul>
+      <li>11.11/12.12 大促:形象款套装(599–699฿)提前 2 周做礼赠内容蓄水;大促期备货上浮 3 倍</li>
+      <li>建立"2 周上新 SOP":选品会(盯 TikTok 站内热榜+竞品店)+1688 寻源+上架,固定节奏</li>
+      <li>第二店铺筹备:同主体再开 1–2 店,分 SKU 矩阵(墨镜店/发饰店),摊薄流量成本(一证多店政策内)</li>
+      <li>KPI:<strong>1000+ 单/月、GMV ¥5 万+、净利 ¥1 万+</strong></li>
+    </ul>
+  </div>
+
+  <h3>8.3 老板执行清单</h3>
+  <div class="grid g3">
+    <div class="card" style="border-top:4px solid var(--bad)">
+      <h3 style="margin-top:0;border:none;padding:0">🔴 本周必做</h3>
+      <ul class="tight" style="font-size:12.5px">
+        <li>完成泰国跨境店注册</li>
+        <li>1688 下首批 20 款打样单</li>
+        <li>拿到 2 家货代泰线报价单</li>
+        <li>建价格表(§5 模型)</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid var(--gold)">
+      <h3 style="margin-top:0;border:none;padding:0">🟡 本月重点</h3>
+      <ul class="tight" style="font-size:12.5px">
+        <li>20 SKU 上架 + 每日 3 条视频机制跑起来</li>
+        <li>30 件达人寄样发出</li>
+        <li>首 30 个 5 星好评到手</li>
+        <li>周度数据复盘机制(转化/出单/退货)</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid var(--ok)">
+      <h3 style="margin-top:0;border:none;padding:0">🟢 本季布局</h3>
+      <ul class="tight" style="font-size:12.5px">
+        <li>爆款 300–500 件本土仓</li>
+        <li>自播日常化(20:00–24:00)</li>
+        <li>11.11/12.12 大促礼赠套装</li>
+        <li>第二/第三店铺矩阵</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S9 RISK ============ -->
+<section id="s9">
+  <div class="sec-head"><span class="no">09</span><h2>风险清单与应对</h2><span class="en">RISKS & MITIGATIONS</span></div>
+  <table>
+    <tr><th style="width:140px">风险</th><th style="width:80px">概率</th><th>影响</th><th>应对</th></tr>
+    <tr><td>汇率波动(泰铢/人民币)</td><td>中</td><td>中</td><td>定价留 3–5% 缓冲,周度刷新价格表</td></tr>
+    <tr><td>同质化竞争(白牌跟款)</td><td>高</td><td>中</td><td>2 周上新节奏+款式企划壁垒;跟款只打价格差 10–15%</td></tr>
+    <tr><td>跨境时效(7–15 天)伤转化</td><td>高</td><td>高</td><td>测品期接受;爆品 30 天内切本土仓(Phase 2 已内置)</td></tr>
+    <tr><td>COD 拒收/退货</td><td>中</td><td>中</td><td>低价位拒收率低;退货率按 5–10% 已计入模型;详情页写明"泰国本地客服"</td></tr>
+    <tr><td>雨季洪涝(7–10 月)</td><td>中</td><td>中</td><td>2025 年曼谷已出现洪涝致订单取消;双线货代+发货话术预留缓冲</td></tr>
+    <tr><td>平台规则变动(佣金/类目)</td><td>中</td><td>中</td><td>每月核对费率表;佣金每上调一次即刷新 §5 模型并调价</td></tr>
+    <tr><td>IP 投诉/封店</td><td>低(若守规)</td><td>极高</td><td>选品过审清单:无品牌词、无 IP 图案、无宗教元素;货源 1688 无牌款</td></tr>
+    <tr><td>单一爆款依赖</td><td>中</td><td>高</td><td>永远保持 10+ 在售主力款,单 SKU 占比 &gt;40% 即启动备款</td></tr>
+  </table>
+</section>
+
+<!-- ============ S10 SOURCES ============ -->
+<section id="s10">
+  <div class="sec-head"><span class="no">10</span><h2>数据来源与免责声明</h2><span class="en">SOURCES</span></div>
+  <table>
+    <tr><th>数据</th><th>来源</th><th>时间</th></tr>
+    <tr><td>东南亚 2025 平台电商 GMV $157.6B(+22.8%);Shopee $83.2B / TikTok Shop $45.6B / Lazada $26.9B;泰国增速约 +52%</td><td>Momentum Works《E-commerce in Southeast Asia 2025》(经 Globegraphy / 行业媒体转引)</td><td>08/2026</td></tr>
+    <tr><td>TikTok Shop 2025 全球 GMV $64.3B(+94%);内容电商占东南亚平台 GMV 约 32%</td><td>Momentum Works(行业媒体转引)</td><td>08/2026</td></tr>
+    <tr><td>泰国 2025 年 1–10 月电商收入 7490–8025 亿泰铢</td><td>THECA(泰国电商联盟)经 NBT World 报道</td><td>06/2026</td></tr>
+    <tr><td>TikTok Shop 泰国站 2025 收入 544 亿泰铢(同比 +4 倍+,市占第二)</td><td>跨境电商研究机构(单一来源,⚠️ 建议核实)</td><td>2026</td></tr>
+    <tr><td>泰国站 30 天热销 TOP5;美妆 1000 万+件/20 亿+泰铢</td><td>TT123 泰国畅销品盘点</td><td>03/2024(⚠️ 2024 口径)</td></tr>
+    <tr><td>泰国配饰客群 16–35 岁女性、客单 $1–6、热销价格带、款式偏好、供给缺口、热搜词</td><td>TikTok Shop 官方《东南亚配饰珠宝行业选品指南》</td><td>2024(品类一手权威口径)</td></tr>
+    <tr><td>东南亚美妆个护 GMV $5.9B(2024.7–2025.6);泰国美妆 TOP10 店铺 $500 万门槛、$10–20 客单、60% 单品 $0–10</td><td>Echotik 东南亚美妆行业报告(经新浪财经等转引)</td><td>01/2026 / 2025-04</td></tr>
+    <tr><td>泰国站 2026 佣金上限 8.56%/9.63%、VAT 7%、SFP 3%</td><td>妙手跨境学院 2026 东南亚六国费用模板</td><td>08/2026</td></tr>
+    <tr><td>跨境基础设施费 1.07 泰铢/单(2025-10-01 起)</td><td>腾讯新闻(TikTok Shop 泰国跨境店公告)</td><td>09/2025</td></tr>
+    <tr><td>2026-01-01 取消 1500 泰铢进口免税;低价进口年规模 300 亿+泰铢;平均约 10% 关税测算</td><td>泰国海关总署(Panthong Loikulnan)经 Retail News Asia</td><td>11/2025</td></tr>
+    <tr><td>泰线空运 3–7 天、妥投率 98.7%;中国—泰国专线报价</td><td>物联通物流百科 / 货代公开报价</td><td>03/2026</td></tr>
+    <tr><td>COD 占比 60%+;黄金档 20:00–01:00;达人刊例 5K–20K 泰铢;99/199 尾数定价;宗教禁忌;曼谷 3 日达期望</td><td>TT123 泰国小店运营攻略</td><td>04/2025</td></tr>
+    <tr><td>泰国人口 7100 万、网民 6540 万(2025-01)、CPI +0.4%(2024)</td><td>商务部《对外投资国别指南(泰国)》/ 维基百科</td><td>2025</td></tr>
+    <tr><td>新店 90 天免保证金、一证多店</td><td>启财鹰(TikTok Shop 东南亚新政)</td><td>2026</td></tr>
+    <tr><td>退货率行业均值 8–15%</td><td>数智掌帐(TikTok 东南亚运营成本拆解)</td><td>2025</td></tr>
+    <tr><td>汇率 1 CNY = 4.8943 THB</td><td>中国人民银行外汇中间价</td><td>09/2026</td></tr>
+  </table>
+  <p class="src">免责声明:① 利润模型基于报告日公开费率与货代报价区间测算,实际以平台结算与货代合同为准;② 单一来源数据已逐条标注;③ TikTok 官方选品指南发布于 2024 年,款式缺口判断建议上架前用 TikTok 站内搜索/竞品店再验证一轮;④ 本报告为市场调研,不构成投资承诺。</p>
+</section>
+
+<div class="foot">
+  <p>泰国 TikTok Shop 一件代发选品调研报告 · 生成于 2026-09-30 · 数据通路:公开市场数据 + 平台官方口径 · 建议每季度按最新费率与汇率刷新 §5 利润模型</p>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+(function(){
+  if(!window.Chart) return;
+  var hex = {blue:'#3E7096', orange:'#C56443', green:'#6F8854', gold:'#C68E31', purple:'#836687'};
+
+  new Chart(document.getElementById('chartPlatform'), {
+    type:'bar',
+    data:{
+      labels:['Shopee','TikTok Shop','Lazada'],
+      datasets:[{
+        label:'2025 GMV(亿美元)',
+        data:[832, 456, 269],
+        backgroundColor:[hex.blue, hex.orange, hex.green],
+        borderRadius:6, maxBarThickness:72
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      layout:{padding:{bottom:0}},
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label:function(c){return c.parsed.y+' 亿美元 · 份额约 '+(c.parsed.y/1576*100).toFixed(1)+'%';}}}},
+      scales:{
+        y:{title:{display:true,text:'亿美元'},grid:{color:'#eee'}},
+        x:{grid:{display:false}}
+      }
+    }
+  });
+
+  new Chart(document.getElementById('chartTopCate'), {
+    type:'bar',
+    data:{
+      labels:['美妆个护','家居用品','健康保健','手机/平板配件','家电'],
+      datasets:[{
+        label:'近30天销售额(亿泰铢)',
+        data:[20, 15, 11, 8, 6],
+        backgroundColor:[hex.orange, hex.blue, hex.green, hex.purple, hex.gold],
+        borderRadius:6, maxBarThickness:34
+      }]
+    },
+    options:{
+      indexAxis:'y',
+      responsive:true, maintainAspectRatio:false,
+      layout:{padding:{bottom:0}},
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{title:{display:true,text:'亿泰铢(2024-03 口径:美妆为官方披露下限,其余为榜单量级估算)'},grid:{color:'#eee'}},
+        y:{grid:{display:false}}
+      }
+    }
+  });
+
+  var plLabels=['引流款 99฿','主力款 299฿','形象款 499฿'];
+  new Chart(document.getElementById('chartPL'), {
+    type:'bar',
+    data:{
+      labels:plLabels,
+      datasets:[
+        {label:'采购+国内头程', data:[4.5, 8.5, 18], backgroundColor:hex.blue, stack:'s'},
+        {label:'跨境物流', data:[10, 12, 20], backgroundColor:hex.gold, stack:'s'},
+        {label:'平台佣金+VAT+SFP+手续费', data:[3.9, 11.9, 19.5], backgroundColor:hex.green, stack:'s'},
+        {label:'关税+退货', data:[3, 6.9, 8.9], backgroundColor:hex.purple, stack:'s'},
+        {label:'净利', data:[0, 20.8, 35], backgroundColor:hex.orange, stack:'s'}
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      layout:{padding:{bottom:0}},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}}, tooltip:{callbacks:{label:function(c){return c.dataset.label+': ¥'+c.parsed.y;}}}},
+      scales:{
+        x:{stacked:true,grid:{display:false}},
+        y:{stacked:true,title:{display:true,text:'人民币 ¥(99฿ 款总成本达售价 105% → 亏损,只做引流)'},grid:{color:'#eee'}}
+      }
+    }
+  });
+
+  new Chart(document.getElementById('chartMonthly'), {
+    type:'bar',
+    data:{
+      labels:['第1月 测品','第2月 放量','第3月 稳定','第6月 矩阵化'],
+      datasets:[
+        {type:'bar', label:'月 GMV(¥)', data:[8600, 24500, 50600, 130000], backgroundColor:hex.blue, borderRadius:6, maxBarThickness:64, yAxisID:'y'},
+        {type:'line', label:'月净利(¥)', data:[1300, 4400, 11100, 31000], borderColor:hex.orange, backgroundColor:hex.orange, borderWidth:2.5, pointRadius:4, yAxisID:'y'}
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      layout:{padding:{bottom:0}},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}}},
+      scales:{
+        y:{title:{display:true,text:'人民币 ¥'},grid:{color:'#eee'}},
+        x:{grid:{display:false}}
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>
+
